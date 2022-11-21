@@ -1,9 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 
-// Add a difficulty level of "Cheater" which will cause the program to continue prompting the user until they get the answer correct.
 Console.Write("Difficulty? (1 - easy,2 - medium, 3 - hard, 4 - cheater: ");
-int difficulty = int.Parse(Console.ReadLine());
+// handle the edge case of a user inputting a non-int character
+
+int difficulty;
+if (!int.TryParse(Console.ReadLine(), out difficulty))
+{
+    Console.WriteLine("Input integers only!!!");
+    return;
+}
+
+if (difficulty > 4 || difficulty < 1)
+{
+    Console.WriteLine("choose a number between 1 and 4!");
+    return;
+}
 
 List<int> difficulties = new List<int> {8, 6, 4, 0}; 
 int numberOfGuesses = difficulties[difficulty - 1];

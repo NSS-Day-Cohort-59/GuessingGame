@@ -3,18 +3,20 @@
 
 
 
+
 Console.WriteLine("Guess the Secret Number!");
    
-int secretNumber = 42;
+// Use a random number to set the secret number between 1 and 100 instead of a hard-coded number.
+int secretNumber = new Random().Next(1, 101);
+Console.WriteLine(secretNumber);
 
-for (int i = 1; i <= 4; i++)
+// The prompt should display the number of guesses the user has left.
+for (int i = 4; i >= 1; i--)
 {  
-    // Display the number of the user's current guess in the prompt. For example, if the user has already guessed one time, the prommpt should say something like Your guess (2)>.
-    Console.Write($"Your Guess ({i}): ");
+    Console.Write($"Your Guess (Guesses left: {i}): ");
     string answer = Console.ReadLine();
     if (secretNumber == int.Parse(answer)) 
     {
-        // End the loop early if the user guesses the correct number.
         Console.WriteLine("correct!");
         break;
     }
